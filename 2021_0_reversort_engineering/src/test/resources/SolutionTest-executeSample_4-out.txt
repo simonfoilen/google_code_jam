@@ -1,0 +1,10 @@
+Case #1: IMPOSSIBLE
+Case #2: IMPOSSIBLE
+Case #3: 1 2 3 4
+Case #4: 1 2 4 3
+Case #5: 1 4 3 2
+Case #6: 4 3 2 1
+Case #7: 3 4 2 1
+Case #8: 2 3 4 1
+Case #9: 2 4 3 1
+Case #10: IMPOSSIBLE
