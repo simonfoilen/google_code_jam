@@ -1,5 +1,6 @@
 rootProject.name = 'google_code_jam'
 
+include 'common'
 include '2021_0_mediansort'
 include '2021_0_moons_and_umbrellas'
 include '2021_0_reversort'

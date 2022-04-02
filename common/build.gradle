@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 11
+
+dependencies {
+    api 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    api 'com.foilen:jl-smalltools:1.6.0'
+    api 'com.google.guava:guava:31.0.1-jre'
+    api 'org.slf4j:slf4j-api:1.7.36'
+}

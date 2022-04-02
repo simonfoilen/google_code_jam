@@ -1,10 +1,9 @@
 import com.foilen.smalltools.tools.ExecutorsTools;
 import com.foilen.smalltools.tools.StreamsTools;
-import com.google.common.base.Joiner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.PrintStream;
 import java.util.*;
 
 class SolutionTest {
@@ -18,11 +17,19 @@ class SolutionTest {
         var appToJudge = StreamsTools.createPipe();
         var judgeToApp = StreamsTools.createPipe();
 
+        // Prepare repeaters to show the discussion on the console
+        var repeaterAppToJudgeIn = new RepeaterInputStream(appToJudge.getA());
+        repeaterAppToJudgeIn.add(new PrefixLineOutputStream("A2J> ", System.out));
+
+        var repeaterJudgeToAppOut = new RepeaterOutputStream();
+        repeaterJudgeToAppOut.add(judgeToApp.getB());
+        repeaterJudgeToAppOut.add(new PrefixLineOutputStream("J2A> ", System.out));
+
         // Start the solution
         ExecutorsTools.getCachedDaemonThreadPool().submit(() -> new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute());
 
         // Start the judge
-        var sortingJudge = new SortingJudge(solutions, maxQuestions, new Scanner(appToJudge.getA()), new PrintStream(judgeToApp.getB()));
+        var sortingJudge = new SortingJudge(solutions, maxQuestions, new Scanner(repeaterAppToJudgeIn), new PrintStream(repeaterJudgeToAppOut));
         sortingJudge.run();
 
         // Assert Judge

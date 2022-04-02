@@ -1,8 +1,6 @@
 import com.foilen.smalltools.tuple.Tuple2;
 import com.google.common.base.Joiner;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,7 +44,6 @@ public class SortingJudge implements Runnable {
                 boolean completed = false;
                 while (!completed) {
                     var line = scanner.nextLine();
-                    System.out.println("<< " + line);
                     var parts = Arrays.asList(line.split(" ")).stream()
                             .map(it -> Integer.valueOf(it))
                             .collect(Collectors.toList());
@@ -56,7 +53,6 @@ public class SortingJudge implements Runnable {
                         ++questionsAskedInRound;
                         if (maxQuestions-- < 0) {
                             out.println("-1");
-                            System.out.println(">> -1");
                             throw new RuntimeException("Out of allowed questions");
                         }
 
@@ -69,24 +65,20 @@ public class SortingJudge implements Runnable {
 
                         var median = indexesAndValues.get(1).getB();
                         out.println(median);
-                        System.out.println(">> " + median);
 
                     } else if (parts.size() == solution.size()) {
                         // Check solutions both orders
                         if (parts.equals(solution) || parts.equals(solutionReversed)) {
                             out.println("1");
-                            System.out.println(">> 1");
                             completed = true;
                         } else {
                             out.println("-1");
-                            System.out.println(">> -1");
                             throw new RuntimeException("Wrong solution provided");
                         }
 
                     } else {
                         // Problem
                         out.println("-1");
-                        System.out.println(">> -1");
                         throw new RuntimeException("Wrong request");
                     }
 
