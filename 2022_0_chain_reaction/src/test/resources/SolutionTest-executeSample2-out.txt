@@ -1,0 +1,6 @@
+Case #1: 10
+Case #2: 5
+Case #3: 6
+Case #4: 37
+Case #5: 32
+Case #6: 3000000000
