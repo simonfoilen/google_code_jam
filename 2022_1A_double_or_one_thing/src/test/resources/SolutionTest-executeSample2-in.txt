@@ -1,0 +1,6 @@
+5
+AB
+AAA
+BA
+BBBAA
+BBBAAC

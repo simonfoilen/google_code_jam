@@ -1,0 +1,5 @@
+Case #1: AAB
+Case #2: AAA
+Case #3: BA
+Case #4: BBBAA
+Case #5: BBBAAAAC

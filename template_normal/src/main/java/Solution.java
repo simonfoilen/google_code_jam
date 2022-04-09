@@ -25,10 +25,10 @@ public class Solution {
 
     }
 
-    public static void processNext(int caseNumber, Scanner inputScanner, PrintStream out) {
+    public static void processNext(int caseNumber, Scanner sc, PrintStream out) {
 
         // xxxx: XXXXX
-        // TODO var xxxx = inputScanner.nextInt();
+        // TODO var xxxx = sc.nextInt();
 
         out.println("Case #" + caseNumber + ": ");
     }

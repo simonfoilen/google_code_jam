@@ -34,7 +34,7 @@ public class Solution {
     public void processNext(int caseNumber) {
 
         // xxxx: XXXXX
-        // TODO var xxxx = inputScanner.nextInt();
+        // TODO var xxxx = sc.nextInt();
 
     }
 
