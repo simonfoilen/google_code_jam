@@ -26,7 +26,13 @@ class SolutionTest {
         repeaterJudgeToAppOut.add(new PrefixLineOutputStream("J2A> ", System.out));
 
         // Start the solution
-        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute());
+        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> {
+            try {
+                new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         // Start the judge
         var sortingJudge = new SortingJudge(solutions, maxQuestions, new Scanner(repeaterAppToJudgeIn), new PrintStream(repeaterJudgeToAppOut));

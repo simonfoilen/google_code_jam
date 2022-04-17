@@ -14,7 +14,13 @@ class PythonJudgeTest {
         var judgeToApp = StreamsTools.createPipe();
 
         // Start the solution
-        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute());
+        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> {
+            try {
+                new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         // Start the judge
         var pythonJudge = new PythonJudge("python", "local_testing_tool.py3", appToJudge.getA(), judgeToApp.getB());

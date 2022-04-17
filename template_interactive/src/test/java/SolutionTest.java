@@ -41,7 +41,13 @@ class SolutionTest {
         }
 
         // Start the solution
-        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute());
+        ExecutorsTools.getCachedDaemonThreadPool().submit(() -> {
+            try {
+                new Solution(judgeToApp.getA(), new PrintStream(appToJudge.getB())).execute();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         // Start the judge
         var judge = new SpecificJudge(world, maxQuestions, new Scanner(repeaterAppToJudgeIn), new PrintStream(repeaterJudgeToAppOut));
