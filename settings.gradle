@@ -1,5 +1,6 @@
 rootProject.name = 'google_code_jam'
 
+include 'algos'
 include 'template_normal'
 include 'template_interactive'
 include 'common'

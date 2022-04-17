@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 11
+
+dependencies {
+    testImplementation project(':common')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'junit:junit:4.13.2'
+
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    testImplementation 'com.foilen:jl-smalltools:1.6.0'
+    testImplementation 'com.google.guava:guava:31.0.1-jre'
+    testImplementation 'org.slf4j:slf4j-api:1.7.36'
+}
+
+test {
+    useJUnitPlatform()
+}
